@@ -15,23 +15,24 @@ const getMatchIdx = (user, banned_id) => {
 
 const solution = (user_id, banned_id) => {
   let answer = 0;
+  const set = new Set();
 
-  const dfs = (user_id, banned_id) => {
+  const dfs = (result, user_id, banned_id) => {
     if(banned_id.length === 0) {
-      return answer++;
+      set.add(result);
     } else {
       user_id.forEach((user, idx) => {
         const matchIdx = getMatchIdx(user, banned_id);
         if(matchIdx >= 0) {
-          console.log(idx, user_id, matchIdx, banned_id)
-          dfs([...user_id.slice(idx+1)], [...banned_id.slice(0, matchIdx), ...banned_id.slice(matchIdx+1)])
+          result.push(user);
+          dfs([...result], [...user_id.slice(0, idx), ...user_id.slice(idx+1)], [...banned_id.slice(0, matchIdx), ...banned_id.slice(matchIdx+1)])
         };
       })
     }
   } 
 
-  dfs(user_id, banned_id);
-  return answer;
+  dfs([], user_id, banned_id);
+  return set;
 };
 
 const sol = solution(
