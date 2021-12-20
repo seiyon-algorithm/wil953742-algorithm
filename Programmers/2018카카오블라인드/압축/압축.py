@@ -6,7 +6,6 @@ def solution(msg):
   while i < len(msg):
     num = 0
     jump = 1
-    print(dictionary)
     for j in range(len(dictionary)):
       word_len = len(dictionary[j])
       if msg[i:i+word_len] == dictionary[j]:
