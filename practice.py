@@ -1,19 +1,16 @@
-# print( 1 << 0 )
-# print( 1 << 1 )
-# print( 1 << 2 )
-# print( 1 << 3 )
-# print( 1 << 4 )
-# print( 1 << 5 )
+import heapq
 
-x = 1
-a =1
-b = 1
-c= 39
-x |= 0
-a |= 1
-b |= 2
-c |= 40
-print(x)
-print(a)
-print(b)
-print(c)
+freq = [[43, 'a'], [13, 'b'], [12, 'c'], [16, 'd'], [9, 'e'], [7, 'f']]
+
+def huffman(freq):
+  heap = freq[:]
+  heapq.heapify(heap)
+  while len(heap) > 1:
+    node1 = heapq.heappop(heap)
+    node2 = heapq.heappop(heap)
+    heapq.heappush(heap, [node1[0] + node2[0], 'parent'])
+  
+  
+huffman(freq)
+  
+  
