@@ -1,5 +1,3 @@
-import math
-
 n = int(input())
 stairs = []
 for _ in range(n):
